@@ -1,0 +1,23 @@
+package mysql;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class WriteToFile {
+
+    private String path;
+
+    public WriteToFile(String path) {
+        this.path = path;
+    }
+
+    public void write(String data) {
+        try {
+            FileOutputStream output = new FileOutputStream(path);
+            output.write(data.getBytes());
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
