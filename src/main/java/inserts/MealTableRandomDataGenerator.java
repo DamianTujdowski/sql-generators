@@ -1,4 +1,4 @@
-package mysql;
+package inserts;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,20 +7,22 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MysqlnsertIntoMeal {
+public class MealTableRandomDataGenerator {
 
-    public String insertIntoMealTable(int rowsNumber) {
-        return IntStream.rangeClosed(0, rowsNumber)
-                .mapToObj(this::mapper)
+    public String generateInsertIntoQueries(String rowsNumber) {
+        return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
+                .mapToObj(this::mapToSingleInsertIntoQuery)
                 .collect(Collectors.joining("\n"));
     }
 
-    private String mapper(int i) {
-        return String.format("INSERT INTO meal (id, designation, energy, meal_category, preparation_description, preparation_difficulty, preparation_duration, child_id, is_pre_defined) " +
-                "VALUES (%d, %s, %d, %s, %s, %s ,%d, %d, %d);", i, generateDesignation(), generateEnergy(), generateMealCategory(), generateDescription(), generateDifficulty(), generatePrepDuration(), generateChildId(i), generatePreDefinitionity(i));
+    private String mapToSingleInsertIntoQuery(int i) {
+        return String.format("INSERT INTO meal (id, designation, energy, meal_category, preparation_description, " +
+                "preparation_difficulty, preparation_duration, child_id, is_pre_defined) VALUES (%d, %s, %d, %s, %s, %s ,%d, %d, %d);",
+                i, generateDesignation(), generateEnergy(), generateMealCategory(), generateDescription(),
+                generateDifficulty(), generatePrepDuration(), generateChildId(i), 0);
     }
 
-    String generateDesignation() {
+    private String generateDesignation() {
         List<String> names = Arrays.asList("\'porridge\'", "\'milk\'", "\'potato puree\'", "\'grated apple\'", "\'boiled broccoli\'", "\'boiled carrot\'", "\'water\'", "\'pear mousse\'", "\'vegetable salad\'");
         Collections.shuffle(names);
         return names.get(0);
@@ -57,7 +59,4 @@ public class MysqlnsertIntoMeal {
         return i % 5 == 0 ? 2 : 1;
     }
 
-    private int generatePreDefinitionity(int i) {
-        return i % 7 == 0 ? 1 : 0;
-    }
 }

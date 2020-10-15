@@ -1,4 +1,4 @@
-package mysql;
+package inserts;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
