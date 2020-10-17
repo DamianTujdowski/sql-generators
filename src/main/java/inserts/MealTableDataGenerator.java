@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MealTableRandomDataGenerator {
+public class MealTableDataGenerator {
 
     public String generateInsertIntoQueries(String rowsNumber) {
         return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
@@ -23,7 +23,8 @@ public class MealTableRandomDataGenerator {
     }
 
     private String generateDesignation() {
-        List<String> names = Arrays.asList("\'porridge\'", "\'milk\'", "\'potato puree\'", "\'grated apple\'", "\'boiled broccoli\'", "\'boiled carrot\'", "\'water\'", "\'pear mousse\'", "\'vegetable salad\'");
+        List<String> names = Arrays.asList("\'porridge\'", "\'milk\'", "\'potato puree\'", "\'grated apple\'",
+                "\'boiled broccoli\'", "\'boiled carrot\'", "\'water\'", "\'pear mousse\'", "\'vegetable salad\'");
         Collections.shuffle(names);
         return names.get(0);
     }
