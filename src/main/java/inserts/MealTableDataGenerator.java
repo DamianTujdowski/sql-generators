@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MealTableDataGenerator {
+public class MealTableDataGenerator extends DataGenerator{
 
     public String generateInsertIntoQueries(String rowsNumber) {
         return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
@@ -15,7 +15,7 @@ public class MealTableDataGenerator {
                 .collect(Collectors.joining("\n"));
     }
 
-    private String mapToSingleInsertIntoQuery(int i) {
+    public String mapToSingleInsertIntoQuery(int i) {
         return String.format("INSERT INTO meal (id, designation, energy, meal_category, preparation_description, " +
                 "preparation_difficulty, preparation_duration, child_id, is_pre_defined) VALUES (%d, %s, %d, %s, %s, %s ,%d, %d, %d);",
                 i, generateDesignation(), generateEnergy(), generateMealCategory(), generateDescription(),
