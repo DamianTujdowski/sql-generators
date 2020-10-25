@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 
 public class MealTableDataGenerator extends DataGenerator{
 
-    public String generateInsertIntoQueries(String rowsNumber, String id) {
-        return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
+    public String generateInsertIntoQueries(String startId, String rowsNumber, String id) {
+        return IntStream.rangeClosed(Integer.parseInt(startId), Integer.parseInt(rowsNumber) + Integer.parseInt(startId))
                 .mapToObj(num -> mapToSingleInsertIntoQuery(num, id))
                 .collect(Collectors.joining("\n"));
     }
