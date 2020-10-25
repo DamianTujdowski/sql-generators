@@ -1,8 +1,8 @@
 package inserts;
 
-abstract class DataGenerator {
+abstract public class DataGenerator {
 
-    abstract String generateInsertIntoQueries(String rowsNumber);
+    abstract public String generateInsertIntoQueries(String rowsNumber, String id);
 
-    abstract String mapToSingleInsertIntoQuery(int id);
+    abstract public String mapToSingleInsertIntoQuery(int rowId, String id);
 }

@@ -4,19 +4,19 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ConsumptionTimeTableDataGenerator {
+public class ConsumptionTimeTableDataGenerator extends DataGenerator{
 
 
-    public String generateInsertIntoQueries(String rowsNumber, String mealId) {
+    public String generateInsertIntoQueries(String rowsNumber, String id) {
         return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
-                .mapToObj(num -> mapToSingleInsertIntoQuery(num, mealId))
+                .mapToObj(num -> mapToSingleInsertIntoQuery(num, id))
                 .collect(Collectors.joining("\n"));
     }
 
 
-    private String mapToSingleInsertIntoQuery(int id, String mealId) {
-        return String.format("INSERT INTO consumption_time (id, consumption_time, meal_id) VALUES (%d, %s, %s)",
-                id, generateDateTime(), mealId);
+    public String mapToSingleInsertIntoQuery(int rowId, String mealId) {
+        return String.format("INSERT INTO consumption_time (id, consumption_time, meal_id) VALUES (%d, %s, %s);",
+                rowId, generateDateTime(), mealId);
     }
 
     private String generateDateTime() {

@@ -9,17 +9,17 @@ import java.util.stream.IntStream;
 
 public class MealTableDataGenerator extends DataGenerator{
 
-    public String generateInsertIntoQueries(String rowsNumber) {
+    public String generateInsertIntoQueries(String rowsNumber, String id) {
         return IntStream.rangeClosed(0, Integer.parseInt(rowsNumber))
-                .mapToObj(this::mapToSingleInsertIntoQuery)
+                .mapToObj(num -> mapToSingleInsertIntoQuery(num, id))
                 .collect(Collectors.joining("\n"));
     }
 
-    public String mapToSingleInsertIntoQuery(int i) {
+    public String mapToSingleInsertIntoQuery(int rowId, String childId) {
         return String.format("INSERT INTO meal (id, designation, energy, meal_category, preparation_description, " +
-                "preparation_difficulty, preparation_duration, child_id, is_pre_defined) VALUES (%d, %s, %d, %s, %s, %s ,%d, %d, %d);",
-                i, generateDesignation(), generateEnergy(), generateMealCategory(), generateDescription(),
-                generateDifficulty(), generatePrepDuration(), generateChildId(i), 0);
+                "preparation_difficulty, preparation_duration, child_id, is_pre_defined) VALUES (%d, %s, %d, %s, %s, %s ,%d, %s, %d);",
+                rowId, generateDesignation(), generateEnergy(), generateMealCategory(), generateDescription(),
+                generateDifficulty(), generatePrepDuration(), childId, 0);
     }
 
     private String generateDesignation() {
@@ -54,10 +54,6 @@ public class MealTableDataGenerator extends DataGenerator{
 
     private int generatePrepDuration() {
         return 5 + (int) (new Random().nextFloat() * (30 - 5));
-    }
-
-    private Integer generateChildId(int i) {
-        return i % 5 == 0 ? 2 : 1;
     }
 
 }
