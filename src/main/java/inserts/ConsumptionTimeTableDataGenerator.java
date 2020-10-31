@@ -32,7 +32,7 @@ public class ConsumptionTimeTableDataGenerator extends DataGenerator{
     }
 
     private String generateRandomDateOrTime(int bound) {
-        int dateOrTime = new Random().nextInt(bound);
+        int dateOrTime = new Random().nextInt(bound) + 1;
         return dateOrTime < 10 ? "0" + dateOrTime : "" + dateOrTime;
     }
 }
