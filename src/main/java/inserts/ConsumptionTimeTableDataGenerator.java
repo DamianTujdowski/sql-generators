@@ -4,8 +4,9 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ConsumptionTimeTableDataGenerator extends DataGenerator{
+public class ConsumptionTimeTableDataGenerator extends DataGenerator {
 
+    private Random randomDayOrMonth = new Random();
 
     public String generateInsertIntoQueries(String startId, String rowsNumber, String id) {
         return IntStream.rangeClosed(Integer.parseInt(startId), Integer.parseInt(rowsNumber) + Integer.parseInt(startId))
@@ -32,7 +33,7 @@ public class ConsumptionTimeTableDataGenerator extends DataGenerator{
     }
 
     private String generateRandomDateOrTime(int bound) {
-        int dateOrTime = new Random().nextInt(bound) + 1;
-        return dateOrTime < 10 ? "0" + dateOrTime : "" + dateOrTime;
+        int dayOrMonth = randomDayOrMonth.nextInt(bound) + 1;
+        return dayOrMonth < 10 ? "0" + dayOrMonth : "" + dayOrMonth;
     }
 }
