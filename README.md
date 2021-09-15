@@ -34,4 +34,6 @@ Then you should replace "Intel" with proper directory name.
 
 <h3 align="left">Tech stack:</h3>
 <img src ="https://img.shields.io/badge/Java--green" width="65" height="30"/>
-<img src ="https://img.shields.io/badge/Design pattern-Strategy-green" width="210" height="30"/>
+
+<h3 align="left">Design patterns:</h3>
+<img src ="https://img.shields.io/badge/Strategy--green" width="90" height="30"/>
