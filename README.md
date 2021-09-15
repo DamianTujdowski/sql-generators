@@ -1,7 +1,7 @@
 <h1 align="center">Query generator</h1>
-<h3 align="center">CLI application that generates SQL INSERT queries</h3>
+<h3 align="center">Console application that generates SQL INSERT queries</h3>
 
-Purpose of this CLI is to generate .sql file with queries which fill my Baby diet app's MySQL database with partly random data.
+Purpose of this app is to generate .sql files with queries which fill my Baby diet app's MySQL database with partly random data.
 
 <h3 align="left">Features:</h3>
 
